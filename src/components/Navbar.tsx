@@ -1,109 +1,109 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { Menu, X, ArrowUp, Home, User, Layers, Mail } from 'lucide-react';
+import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Sun, Moon } from 'lucide-react'; // Ganti User dengan Sun dan Moon
 
-export default function FloatingWidgetNav() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Inisialisasi tema dari localStorage, default ke 'light' (sesuai desain baru)
+  const [theme, setTheme] = useState<'light' | 'dark'>('light'); 
 
-  // Detect mobile screen
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    // Ambil tema dari localStorage saat komponen dimuat
+    const storedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+    if (storedTheme) {
+      setTheme(storedTheme);
+      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    } else {
+      // Jika tidak ada di storage, atur tema default (light) pada HTML
+      document.documentElement.classList.remove('dark');
+    }
+  }, []); // Hanya dijalankan sekali saat mount
 
-  // Show scroll-to-top button on mobile
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 250);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
+    
+    // **PENTING:** Anda juga perlu merevisi global.css (di bawah) agar dark mode Anda berfungsi kembali
   };
 
   const navItems = [
-    { id: 'about', label: 'About', icon: <User size={18} /> },
-    { id: 'skills', label: 'Skills', icon: <Layers size={18} /> },
-    { id: 'projects', label: 'Projects', icon: <Home size={18} /> },
-    { id: 'contact', label: 'Contact', icon: <Mail size={18} /> }
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'contact', label: 'Contact' },
   ];
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
+  };
+
   return (
-    <>
-      {/* MAIN FLOATING MENU (same as before) */}
-      <div
-        className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3"
-        onMouseEnter={() => !isMobile && setIsOpen(true)}
-        onMouseLeave={() => !isMobile && setIsOpen(false)}
-      >
-        {/* Popup items */}
-        <div className={`flex flex-col items-end gap-3 transition-all duration-500 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-          }`}>
-          {navItems.map(({ id, label, icon }, i) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              style={{ transitionDelay: isOpen ? `${i * 80}ms` : "0ms" }}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl shadow-lg
-                bg-white/10 backdrop-blur-xl border border-white/20
-                text-white hover:text-blue-300 hover:bg-white/20 transition-all
-                scale-95 hover:scale-100 hover:shadow-blue-500/30 hover:shadow-[0_0_15px]"
-              onClick={() => isMobile && setIsOpen(false)}
+    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 dark:bg-gray-900/90 dark:border-gray-700 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo/Nama */}
+          <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition">
+            AFFAN DJAFAR
+          </Link>
+
+          {/* Nav Links (Desktop) */}
+          <div className="hidden md:flex space-x-8">
+            {navItems.map(({ id, label }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition duration-150"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Theme Toggle / Mobile Menu Toggle */}
+          <div className="flex items-center gap-4">
+            
+            {/* Theme Toggle Button */}
+            <button 
+              onClick={toggleTheme}
+              className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle theme"
             >
-              {icon}
-              <span className="font-medium">{label}</span>
-            </a>
+              {theme === 'light' ? <Moon size={24} /> : <Sun size={24} />}
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden p-1 text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu (Drawer/Flyout) - Tambahkan dark mode styling di sini */}
+      <div 
+        className={`md:hidden overflow-hidden transition-all duration-300 bg-white dark:bg-gray-900 ${
+          isMenuOpen ? 'max-h-96 opacity-100 py-2 border-t border-gray-100 dark:border-gray-700' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="flex flex-col space-y-2 px-4 pb-2">
+          {navItems.map(({ id, label }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className="block w-full text-left py-2 px-3 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition duration-150"
+            >
+              {label}
+            </button>
           ))}
         </div>
-
-        {/* Main button: Desktop = scroll to top; Mobile = toggle */}
-        <button
-          onClick={() => {
-            if (isMobile) {
-              setIsOpen(!isOpen);
-            } else {
-              scrollToTop();
-            }
-          }}
-          className="relative p-4 rounded-full text-white
-            bg-gradient-to-br from-blue-500 to-blue-700 shadow-xl transition-all 
-            hover:scale-110 active:scale-95
-            hover:shadow-blue-500/30 hover:shadow-[0_0_20px]
-            backdrop-blur-md border border-white/20 cursor-pointer"
-        >
-          <span className={`absolute inset-0 rounded-full blur-xl transition-opacity
-            ${isOpen ? "opacity-70 bg-blue-600/40" : "opacity-0"}`} />
-
-          <span className="relative z-10">
-            {!isMobile && (isOpen ? <ArrowUp size={24} /> : <Menu size={24} />)}
-            {isMobile && (isOpen ? <X size={24} /> : <Menu size={24} />)}
-          </span>
-        </button>
       </div>
-      {isMobile && (
-        <button
-          onClick={scrollToTop}
-          className={`
-      fixed right-6 z-[250] p-3 rounded-full bg-blue-600 text-white shadow-xl 
-      backdrop-blur-md border border-white/20 active:scale-90
-      transition-all duration-300
-      ${showScrollTop
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 translate-y-6 pointer-events-none"}
-    `}
-          style={{ bottom: "6.2rem" }}   // same position as before but adjustable
-        >
-          <ArrowUp size={20} />
-        </button>
-      )}
-
-    </>
+    </nav>
   );
 }

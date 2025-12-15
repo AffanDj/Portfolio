@@ -25,21 +25,21 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12 text-blue-400" data-aos="fade-up">Projects</h2>
+        <h2 className="text-4xl font-bold mb-12 text-gray-900" data-aos="fade-up">Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="glass p-8 rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              className="bg-white p-8 rounded-xl border-t-4 border-indigo-600 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
               data-aos="fade-up"
               data-aos-delay={index * 200}
             >
-              <div className="text-6xl mb-6">{project.icon}</div>
+              <div className="text-5xl mb-6">{project.icon}</div>
               <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">{project.desc}</p>
+              <p className="text-gray-600 mb-6 leading-relaxed">{project.desc}</p>
               <a
                 href={project.link}
-                className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold hover:underline"
+                className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-semibold hover:underline"
               >
                 View Project <ExternalLink className="ml-2" size={16} />
               </a>

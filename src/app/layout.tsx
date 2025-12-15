@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-slate-950 text-white antialiased min-h-screen`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-white`}>
         <AOSInit /> {/* Initialize AOS */}
         {children}
       </body>
