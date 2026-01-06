@@ -72,7 +72,7 @@ export default function Navbar() {
               className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? <Moon size={24} /> : <Sun size={24} />}
+              {theme === 'dark' ? <Moon size={24} /> : <Sun size={24} />}
             </button>
 
             {/* Mobile Menu Button */}

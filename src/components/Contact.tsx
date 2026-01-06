@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 px-4">
       <div className="max-w-4xl mx-auto text-center" data-aos="fade-up">
-        <h2 className="text-4xl font-bold mb-8 text-gray-900">Contact</h2>
+        <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-indigo-400">Contact</h2>
         <p className="text-lg text-gray-600 mb-6">Feel free to reach out via email:</p>
         <a
           href="mailto:affandjafar@gmail.com"

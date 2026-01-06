@@ -1,9 +1,13 @@
 @import "tailwindcss";
 @import 'aos/dist/aos.css';
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+  body {
+    @apply transition-colors duration-300;
   }
   /* Hapus body CSS ini untuk menggunakan dark:bg-class di layout.tsx */
   /* body {
