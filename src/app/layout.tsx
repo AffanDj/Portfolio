@@ -20,8 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-white`}>
-        <AOSInit /> {/* Initialize AOS */}
+      {/* Cukup biarkan font dan min-h-screen saja di body */}
+      <body className={`${inter.className} antialiased min-h-screen`}>
+        <AOSInit />
         {children}
       </body>
     </html>

@@ -1,57 +1,25 @@
-import { Briefcase, GraduationCap, Calendar } from 'lucide-react';
-
-const experiences = [
-  {
-    title: "Full Stack Developer (Internship)",
-    company: "Tech Solutions Inc.",
-    date: "Feb 2024 - Jul 2024",
-    desc: "Developed and maintained web applications using React and Node.js. Optimized database queries which improved performance by 30%.",
-    icon: Briefcase,
-  },
-  {
-    title: "Computer Science Student",
-    company: "Binus University",
-    date: "2020 - 2024",
-    desc: "Focused on Software Engineering and UI/UX. Graduated with honors. Active in various tech organizations.",
-    icon: GraduationCap,
-  }
-];
-
 export default function Experience() {
   return (
     <section id="experience" className="py-20 px-4">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl font-bold mb-16 text-center text-gray-900 dark:text-white" data-aos="fade-up">
-          Experience
+        <h2 className="text-xl md:text-2xl text-center mb-16 uppercase italic dark:text-white" data-aos="fade-down">
+          Mission History
         </h2>
-
-        {/* Container Garis Vertikal */}
-        <div className="relative border-l-2 border-indigo-500/30 dark:border-slate-800 ml-4 md:ml-6">
-          {experiences.map((exp, index) => (
-            <div key={index} className="mb-12 ml-8 relative" data-aos="fade-up" data-aos-delay={index * 100}>
-              
-              {/* Bulatan Ikon (Dot) */}
-              <div className="absolute -left-[50px] top-0 w-10 h-10 rounded-full bg-white dark:bg-slate-900 border-2 border-indigo-500 flex items-center justify-center z-10 shadow-sm">
-                <exp.icon size={18} className="text-indigo-600 dark:text-indigo-400" />
+        <div className="relative border-l-4 border-black dark:border-white border-dashed ml-4 md:ml-10">
+          {[1, 2].map((_, idx) => (
+            <div key={idx} className="mb-12 ml-10 relative" data-aos="fade-left" data-aos-delay={idx * 200}>
+              <div className="absolute -left-[64px] top-0 w-12 h-12 bg-[#FFFF00] dark:bg-[#E5E500] border-4 border-black dark:border-white flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+                <span className="text-black font-bold text-sm">LV{idx+1}</span>
               </div>
 
-              {/* Kartu Konten */}
-              <div className="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-gray-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="flex items-center gap-2 mb-2 text-indigo-600 dark:text-indigo-400 font-medium">
-                  <Calendar size={14} />
-                  <span className="text-xs">{exp.date}</span>
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                  {exp.title}
-                </h3>
-                
-                <p className="text-indigo-600 dark:text-indigo-300 font-medium mb-4">
-                  {exp.company}
-                </p>
-                
-                <p className="text-gray-600 dark:text-slate-400 leading-relaxed text-sm">
-                  {exp.desc}
+              <div className="pixel-card p-6 bg-white dark:bg-slate-900">
+                <span className="text-[10px] bg-yellow-400 dark:bg-indigo-600 text-black dark:text-white px-2 py-1 mb-2 border-1 border-black dark:border-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] inline-block">
+                  2020 - 2024
+                </span>
+                <h3 className="text-lg font-bold mt-2 dark:text-white">Computer Science Graduate</h3>
+                <p className="text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase">Binus University</p>
+                <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                  Unlocked skills in Software Engineering and UI/UX Design.
                 </p>
               </div>
             </div>
