@@ -1,4 +1,4 @@
-import { Mail } from 'lucide-react'; // Lucide icon
+import { Mail } from 'lucide-react';
 
 export default function Contact() {
   return (
