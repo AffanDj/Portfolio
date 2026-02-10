@@ -35,14 +35,14 @@ export default function Hero() {
           <div className="pixel-border bg-white dark:bg-slate-900 p-4 pb-8 rotate-3 group-hover:rotate-0 transition-all duration-300 w-[280px] md:w-[320px]">
             <div className="aspect-[1/1] relative mini-grid bg-slate-50 dark:bg-slate-800 border-4 border-slate-900 dark:border-white overflow-hidden mb-6">
               <Image
-                src="/AffanReal.png"
+                src="/IMG_2948.jpg"
                 alt="Affan Real Version"
                 fill
                 className="object-contain object-bottom transition-opacity duration-500 opacity-0 group-hover:opacity-100"
                 priority
               />
               <Image
-                src="/PPAffan.png"
+                src="/IMG_5118.png"
                 alt="Affan Pixel Art"
                 fill
                 className="object-contain object-bottom transition-opacity duration-500 opacity-100 group-hover:opacity-0"
