@@ -1,4 +1,4 @@
-import { Mail } from 'lucide-react';
+import { Mail, PhoneCall, Linkedin } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -12,6 +12,20 @@ export default function Contact() {
         >
           <Mail className="mr-2  dark:text-white" size={20} />
           affandjafar@gmail.com
+        </a>
+        <a
+          href=""
+          className="pixel-border inline-flex items-center px-6 py-3 bg-white dark:bg-slate-900 font-semibold hover:-translate-y-1 hover:bg-yellow-400 dark:hover:bg-indigo-600"
+        >
+          <PhoneCall className="mr-2  dark:text-white" size={20} />
+          +62-857-1930-7863
+        </a>
+        <a
+          href="https://www.linkedin.com/in/affan-djafar-3821a4254/"
+          className="pixel-border inline-flex items-center px-6 py-3 bg-white dark:bg-slate-900 font-semibold hover:-translate-y-1 hover:bg-yellow-400 dark:hover:bg-indigo-600"
+        >
+          <Linkedin className="mr-2  dark:text-white" size={20} />
+          Affan Djafar
         </a>
       </div>
     </section>

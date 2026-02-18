@@ -15,12 +15,11 @@ export default function Hero() {
             </h1>
 
             <p className="mb-10 text-slate-600 dark:text-slate-400 max-w-md">
-              Computer Science Graduate. Specialize in building functional and visually
-              striking digital products with modern technologies.
+              Recent Computer Science graduate from BINUS University. Specialize in building functional web applications using ReactJS, NextJS, and Node.js.
             </p>
 
             <div className="flex gap-4">
-              <a href='/#about' className="pixel-border bg-yellow-400 dark:bg-indigo-600 text-white px-6 py-2 hover:-translate-y-1 transition-colors uppercase text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              <a href='/#projects' className="pixel-border bg-yellow-400 dark:bg-indigo-600 text-white px-6 py-2 hover:-translate-y-1 transition-colors uppercase text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 Explore Work
               </a>
               <a href='/#contact' className="pixel-border bg-white dark:bg-slate-800 px-6 py-2 hover:-translate-y-1 dark:hover:bg-slate-700 transition-colors uppercase text-sm font-bold dark:text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -35,7 +34,7 @@ export default function Hero() {
           <div className="pixel-border bg-white dark:bg-slate-900 p-4 pb-8 rotate-3 group-hover:rotate-0 transition-all duration-300 w-[280px] md:w-[320px]">
             <div className="aspect-[1/1] relative mini-grid bg-slate-50 dark:bg-slate-800 border-4 border-slate-900 dark:border-white overflow-hidden mb-6">
               <Image
-                src="/0218_004.jpg"
+                src="/0218_004.jpg" 
                 alt="Affan Real Version"
                 fill
                 className="object-contain object-bottom transition-opacity duration-500 opacity-0 group-hover:opacity-100"
@@ -48,7 +47,6 @@ export default function Hero() {
                 className="object-contain object-bottom transition-opacity duration-500 opacity-100 group-hover:opacity-0"
                 priority
               />
-
             </div>
             <div className="flex justify-between items-center px-1">
               <p className="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-widest">
