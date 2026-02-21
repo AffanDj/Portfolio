@@ -44,7 +44,7 @@ const skills = [
   { 
     name: 'CSS3', 
     color: 'bg-sky-500 dark:bg-sky-700',
-    icon: '/icons/css3.svg' 
+    icon: '/icons/css.svg' 
   },
   { 
     name: 'Tailwind', 
