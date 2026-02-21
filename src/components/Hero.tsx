@@ -1,11 +1,18 @@
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
 
 export default function Hero() {
+  const [isHeld, setIsHeld] = useState(false);
+
+  const handleHoldStart = () => setIsHeld(true);
+  const handleHoldEnd = () => setIsHeld(false);
+
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 px-4 md:px-10">
+    <section className="min-h-screen flex items-center justify-center pt-24 pb-12 px-4 md:px-10">
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12" data-aos="zoom-out">
 
-        <div className="flex-1 w-full">
+        <div className="flex-1 w-full text-center md:text-left">
           <div className="pixel-card p-8 md:p-12 bg-white dark:bg-slate-900 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-400 dark:bg-indigo-600 border-l-4 border-b-4 border-slate-900 dark:border-white -mr-12 -mt-12 rotate-45" />
 
@@ -14,11 +21,11 @@ export default function Hero() {
               <span className="text-indigo-600 dark:text-indigo-400">Djafar</span>
             </h1>
 
-            <p className="mb-10 text-slate-600 dark:text-slate-400 max-w-md">
+            <p className="mb-10 text-slate-600 dark:text-slate-400 max-w-md mx-auto md:mx-0">
               Recent Computer Science graduate from BINUS University. Specialize in building functional web applications using ReactJS, NextJS, and Node.js.
             </p>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a href='/#projects' className="pixel-border bg-yellow-400 dark:bg-indigo-600 text-white px-6 py-2 hover:-translate-y-1 transition-colors uppercase text-sm font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 Explore Work
               </a>
@@ -31,31 +38,46 @@ export default function Hero() {
 
         <div className="flex-shrink-0 relative group">
           <div className="absolute inset-0 bg-slate-900 dark:bg-white translate-x-4 translate-y-4 -z-10 transition-colors duration-300" />
-          <div className="pixel-border bg-white dark:bg-slate-900 p-4 pb-8 rotate-3 group-hover:rotate-0 transition-all duration-300 w-[280px] md:w-[320px]">
-            <div className="aspect-[1/1] relative mini-grid bg-slate-50 dark:bg-slate-800 border-4 border-slate-900 dark:border-white overflow-hidden mb-6">
+          
+          <div 
+            className="pixel-border bg-white dark:bg-slate-900 p-4 pb-6 rotate-3 md:group-hover:rotate-0 transition-all duration-300 w-[280px] md:w-[320px] cursor-pointer"
+            onMouseDown={handleHoldStart}
+            onMouseUp={handleHoldEnd}
+            onMouseLeave={handleHoldEnd}
+            onTouchStart={handleHoldStart}
+            onTouchEnd={handleHoldEnd}
+          >
+            <div className="aspect-[1/1] relative mini-grid bg-slate-50 dark:bg-slate-800 border-4 border-slate-900 dark:border-white overflow-hidden mb-4">
               <Image
                 src="/0218_004.jpg" 
                 alt="Affan Real Version"
                 fill
-                className="object-contain object-bottom transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                className={`object-contain object-bottom transition-opacity duration-500 ${isHeld ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}
                 priority
               />
               <Image
                 src="/IMG_5118.png"
                 alt="Affan Pixel Art"
                 fill
-                className="object-contain object-bottom transition-opacity duration-500 opacity-100 group-hover:opacity-0"
+                className={`object-contain object-bottom transition-opacity duration-500 ${isHeld ? 'opacity-0' : 'opacity-100 md:group-hover:opacity-0'}`}
                 priority
               />
             </div>
-            <div className="flex justify-between items-center px-1">
-              <p className="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-widest">
-                AFFAN_01.PNG
+            
+            <div className="flex flex-col gap-1 px-1">
+              <div className="flex justify-between items-center">
+                <p className="font-bold text-slate-900 dark:text-white uppercase text-[10px] tracking-widest">
+                  AFFAN_01.PNG
+                </p>
+                <div className="w-3 h-3 bg-yellow-400 dark:bg-indigo-600 border-2 border-slate-900 dark:border-white" />
+              </div>
+              <p className="text-[8px] text-slate-500 dark:text-slate-400 italic md:hidden">
+                (Hold image to see real picture)
               </p>
-              <div className="w-3 h-3 bg-yellow-400 dark:bg-indigo-600 border-2 border-slate-900 dark:border-white" />
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
