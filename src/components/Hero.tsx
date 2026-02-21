@@ -56,7 +56,7 @@ export default function Hero() {
                 priority
               />
               <Image
-                src="/IMG_5118.png"
+                src="/IMG_5118.PNG"
                 alt="Affan Pixel Art"
                 fill
                 className={`object-contain object-bottom transition-opacity duration-500 ${isHeld ? 'opacity-0' : 'opacity-100 md:group-hover:opacity-0'}`}
