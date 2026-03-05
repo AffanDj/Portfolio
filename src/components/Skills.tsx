@@ -66,6 +66,11 @@ const skills = [
     color: 'bg-slate-400 dark:bg-slate-600',
     icon: '/icons/git.svg' 
   },
+  {
+    name: 'Jest',
+    color: 'bg-pink-300 dark:bg-pink-700',
+    icon: '/icons/jest.svg'
+  }
 ];
 
 export default function Skills() {
