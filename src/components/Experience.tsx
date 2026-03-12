@@ -8,14 +8,14 @@ const missionHistory = [
   },
   {
     level: "LV2",
-    period: "2023 - 2024",
+    period: "Mar 2023 - Feb 2024",
     title: "Full Stack Developer Intern",
     company: "AIA SINGAPORE",
     description: "Developed front-end admin-facing websites using NextJS and TypeScript. Optimized features and refactored code for better performance."
   },
   {
     level: "LV3",
-    period: "2026 - Present",
+    period: "Jan 2026 - Mar 2026",
     title: "Host Live",
     company: "KOOLPOP HUB BY EGOGO",
     description: "Driving product sales for premium brands like DJI and Garmin through interactive live streaming and content strategy."
