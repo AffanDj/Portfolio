@@ -70,6 +70,16 @@ const skills = [
     name: 'Jest',
     color: 'bg-pink-300 dark:bg-pink-700',
     icon: '/icons/jest.svg'
+  },
+  {
+    name: 'Flutter',
+    color: 'bg-rose-300 dark:bg-rose-700',
+    icon: '/icons/flutter.svg'
+  },
+  {
+    name: 'Redux',
+    color: 'bg-rose-300 dark:bg-rose-700',
+    icon: '/icons/redux.svg'
   }
 ];
 
