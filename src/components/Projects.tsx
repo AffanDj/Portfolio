@@ -27,7 +27,7 @@ const projects = [
   },
   {
     title: "AIA Singapore Admin",
-    description: "Admin Facing Website (Internship Project)",
+    description: "Admin Facing Website",
     color: "bg-lime-400 dark:bg-lime-600",
     size: "md:col-span-2",
     link: "#",
